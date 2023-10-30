@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>An automated animation</title>
+    <script type="text/javascript">
+      var imgobj;
+      var animate;
+
+      function init() {
+        imgobj = document.getElementById('myimage');
+        imgobj.style.position = 'relative';
+        imgobj.style.left = '0px';
+      }
+
+      function moveRight() {
+        imgobj.style.left = parseInt(imgobj.style.left) + 10 + 'px';
+        animate = setTimeout(moveRight, 20);
+      }
+
+      function stop() {
+        clearTimeout(animate);
+        imgobj.style.left = '0px';
+      }
+      window.onload = init;
+    </script>
+  </head>
+
+  <body>
+    <form>
+      <img id="myimage" src="1.jpg" style="width: 300px; height: 300px; border-radius: 50px;"/>
+      <p>Click the button below to manipulate the images</p>
+      <input type="button" value="start" onclick="moveRight()">
+      <input type="button" value="stop" onclick="stop()">
+    </form>
+  </body>
+</html>
